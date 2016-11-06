@@ -6,229 +6,74 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="golf.css">
+    <link rel="stylesheet" href="src/golf.css">
     <title>Golf Score</title>
+
 </head>
 <body>
+<div class="page-header"></div>
+<button type="button class=btn btn-primary btn-lg" data-toggle="modal" data-target="#getCourseContainer" onclick="selectCourse()">Select a Golf Course</button>
+<div class="container table-container">
+    <table class="table front"></table>
+    <table class="table back"></table>
 
-<div class="container">
-    <table class="table front">
-        <thead>
-        <tr>
-            <th>Front 9</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>Front</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="success">
-            <td>Green</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="danger">
-            <td>Red</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="info">
-            <td>Blue</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="success">
-            <td><button id="addPlayer" onclick="addPlayer()">Add Player</button></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Total</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
-    <table class="table back">
-        <thead>
-        <tr>
-            <th>Back 9</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>Front</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="success">
-            <td>Green</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="danger">
-            <td>Red</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="info">
-            <td>Blue</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="success">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="danger">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Total</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
 </div>
 
- <!--form for adding a player-->
-<div class="container" id="addPlayerContainer">
-    <form class="form-inline">
-        <div class="form-group">
-            <label class="sr-only" for="formName">Name:</label>
-            <input type="text" class="form-control" id="formName" placeholder="Enter name">
+
+    <!--form for adding a player-->
+    <div class="modal fade"  id="addPlayerContainer">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Player</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only" for="formName">Name:</label>
+                            <input type="text" class="form-control" id="formName" placeholder="Enter name">
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tee Box
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li>Red</a></li>
+                                <li>Blue</a></li>
+                                <li>White</a></li>
+                            </ul>
+                        </div>
+                        <button id="addBtn" type="submit" onclick="teeUp()" class="btn btn-primary">Tee up!</button>
+                    </form>
+                    <div id="message"></div>
+                </div>
+            </div>
         </div>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tee Box
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Red</a></li>
-                <li><a href="#">Blue</a></li>
-                <li><a href="#">White</a></li>
-            </ul>
+    </div>
+
+    <div class="modal fade" id="getCourseContainer" data-toggle="modal" tabindex = "-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Select a Golf Course</h4>
+                </div>
+                <div class="modal-body">
+                    <select id = "courseselect" onchange="getCourse(this.value)"></select>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="chooseCourse" type="button" onclick="buildTable()" class="btn btn-primary" data-dismiss="modal" data-target="#getCourseContainer">Get Ready to Play!</button>
+                </div>
+            </div>
         </div>
-        <button type="submit" onclick="teeUp()" class="btn btn-primary">Tee up!</button>
-    </form>
-    <div id="message"></div>
-</div>
-<script src="golf.js"></script>
+    </div>
+
+
+
+<script src="src/weather.js"></script>
+<script src="src/golf.js"></script>
 </body>
 </html>
 

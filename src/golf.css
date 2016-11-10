@@ -2,6 +2,7 @@ html, body{
     width: 100%;
     height: 100%;
     /*background-color: #0585FF;*/
+    background-image: url("../images/GolfBackground.jpg");
 
 }
 
@@ -10,13 +11,25 @@ html, body{
 }
 
 .container{
-    width:90%;
-    margin: 20px auto;
-    border-radius:4px;
-    background-color: white;
     padding: 20px;
     justify-content: space-between;
-    margin-top: 10%;
+}
+
+
+.page-header{
+    margin: 20px;
+    border: none;
+}
+
+.page-header a{
+    color: wheat;
+    font-size: large;
+}
+
+.page-header span{
+    position: fixed;
+    right: 10px;
+    top: 50px;
 }
 
 #myBtn{
@@ -71,9 +84,25 @@ html, body{
 }
 
 #getCourseContainer{
+    position:relative;
     margin: 0 auto;
-    width: 30%;
-    background: transparent;
+    width: 350px;
+    background-image: url(../images/GolfTexture.jpg);
+    height: 200px;
+    border-radius: 150px;
+}
+
+
+#courseselect {
+    position: absolute;
+    top: 32%;
+    left: 10%;
+    height: 40px;
+}
+#chooseCourse{
+    position: absolute;
+    top: 60%;
+    left: 34%;
 }
 
 .setupmodal{
@@ -112,11 +141,29 @@ html, body{
 
 #addPlayerContainer {
     display:none;
-
 }
+#addPlayerContainer .modal-dialog{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 25%;
+}
+
 #addButtonContainer {
     display:none;
+    position: fixed;
+    left: 45%;
+    top: 15%;
+}
 
+#addBtn{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+
+#teeBoxes{
+    background-color: #82b6c1;
 }
 
 #courseselect{
@@ -124,7 +171,6 @@ html, body{
 }
 
 .w3-teal{
-    color: #fff
-    background-color:
+    color: #fff;
 }
 

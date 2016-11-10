@@ -2,7 +2,7 @@
  * Created by kendratate on 10/25/16.
  */
 
-var players = [];
+var players = {};
 var numberofholesfront = 9;
 var numberofholesback = 9;
 var numberofholes = 18;
@@ -22,14 +22,17 @@ function removePlayer(theID){
 
 function addPlayer() {
     var i = playerIndex;
-    for(var i=0; i< activeCourse.course.tee_types.length; i++){
-        $("#teeBoxes").append("<li value='" + i + " '>" + activeCourse.course.tee_types[i].tee_type + "</ul>");
+    for (var i = 0; i < activeCourse.course.tee_types.length; i++) {
+        $("#teeBoxes").append("<li><a href='#' value='" + i + " '>" + activeCourse.course.tee_types[i].tee_type + "</ul>");
     }
 
     // make form visible
     $("#addPlayerContainer").modal();
-    var teeIndex = $("#teeBoxes li").value();
-    var teeInfo= activeCourse.course.tee_types[0];
+    // var teeIndex = $("#teeBoxes li").value();
+    var teeInfo = activeCourse.course.tee_types[0];
+}
+
+function teeUp(){
 
     var playerlabel = "<tr class='playerrow'><td id='player" + (i) + "'> Player " + (i+1) + " <span class='glyphicon glyphicon-minus-sign' onclick='removePlayer(" +i+ ")'></span></tr></td>";
     $(".front tbody").append("<tr style = 'player" + i + "parRow'></tr>");
@@ -54,6 +57,7 @@ function addPlayer() {
 
 function buildTable(){
     $("#getCourseContainer").hide();
+    $(".container").show();
     // create header row of table from number of holes from selected course
     $(".front").append('<thead/>');
     $(".front thead").append(" <tr><th>Front 9</th></tr>");
@@ -116,7 +120,7 @@ function getCourse(courseID){
             var coursePhone = !activeCourse.course.phone ? "" : activeCourse.course.phone;
             var courseWebsite = !activeCourse.course.website ? "" : activeCourse.course.website;
 
-            $(".page-header").html("<h2>" + courseName + " <small>" + courseAddr + ", " + courseCity + "</small><div id='phone'>" + coursePhone + "</div><span><a href='" +courseWebsite+"'>"+ courseWebsite + "</a></span>");
+            $(".page-header").html("<h2>" + courseName + " <small>" + courseAddr + ", " + courseCity + "</small><div id='phone'>" + coursePhone + "</div><span class='pull-right'><a href='" +courseWebsite+"'>"+ courseWebsite + "</a></span>");
 
         }
     );

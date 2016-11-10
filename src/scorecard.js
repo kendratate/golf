@@ -3,14 +3,52 @@
  */
 function ScoringService(){
     this.calculateFront9 = function(scores){
-        var out = 0;
-        for (var score = 0; score < 9; score++) {
-            out = out + scores[score];
+        var outScore = 0;
+        validateScoresAreNumbers(scores);
+        validateScoresArePositive(scores);
+        for (var hole = 0; hole < 9; hole++) {
+            outScore = outScore + scores[hole];
         }
-        return out;
+        return outScore;
     }
-    this.calculateBack9 = function(){
+    this.calculateBack9 = function(scores){
+        var inScore = 0;
+        validateScoresAreNumbers(scores);
+        validateScoresArePositive(scores);
+        for (var hole = 9; hole < 18; hole++) {
+            inScore = inScore + scores[hole];
+        }
+        return inScore;
+    }
+    this.calculateTotal = function(scores){
+        var totalScore = 0;
+        validateScoresAreNumbers(scores);
+        validateScoresArePositive(scores);
+        for (var hole = 0; hole < 18; hole++) {
+            totalScore = totalScore + scores[hole];
+        }
+        return totalScore;
+    }
+    this.calculateNet = function(playerScore, playerPar){
+        isNaN(playerPar)? 0 : playerPar;
+        return (playerScore - playerPar);
+    }
 
+    function validateScoresAreNumbers(scores){
+        for (var hole = 0; hole < 18; hole++) {
+            if (isNaN(scores[hole])) {
+                throw Error("Score must be a number");
+            }
+        }
     }
+
+    function validateScoresArePositive(scores){
+        for (var hole = 0; hole < 18; hole++){
+            if(scores[hole]<1){
+                throw Error("Entry must be a positive number");
+            }
+        }
+    }
+
 }
 module.exports = ScoringService;

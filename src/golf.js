@@ -11,6 +11,7 @@ var activeCourse;
 var playerIndex = 1;
 var position;
 
+
 $(document).ready(function(){
    getGeoLocation();
 
@@ -23,7 +24,7 @@ function removePlayer(theID){
 function addPlayer() {
     var i = playerIndex;
     for (var i = 0; i < activeCourse.course.tee_types.length; i++) {
-        $("#teeBoxes").append("<li><a href='#' value='" + i + " '>" + activeCourse.course.tee_types[i].tee_type + "</ul>");
+        $("#teeBoxes").append("<li id='" + i + "' onclick='teePicked()'><a href='#' value='" + i + " '>" + activeCourse.course.tee_types[i].tee_type + "</li>");
     }
 
     // make form visible
@@ -33,6 +34,9 @@ function addPlayer() {
 }
 
 function teeUp(){
+
+    var playerTeeType = $('#pickedTee').val();
+    var playerName = $('#formName').val();
 
     var playerlabel = "<tr class='playerrow'><td id='player" + (i) + "'> Player " + (i+1) + " <span class='glyphicon glyphicon-minus-sign' onclick='removePlayer(" +i+ ")'></span></tr></td>";
     $(".front tbody").append("<tr style = 'player" + i + "parRow'></tr>");
@@ -125,6 +129,12 @@ function getCourse(courseID){
         }
     );
 }
+
+function teePicked() {
+    $('#pickedTee').text= $(this).text();
+}
+
+
 //called from onkeyup of input boxes <input
 function calculateScore(playerid){ // pass in the player id
     var thetotal = 0;

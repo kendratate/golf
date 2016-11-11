@@ -12,7 +12,7 @@ function getGeoLocation(){
             position = pos.coords;
 
             $("#position").text("Latitude: " + position.latitude + " Longitude: " + position.longitude);
-            var weatherURL = 'http://api.openweathermap.org/data/2.5/weather?lat=' + position.latitude + '&lon=' + position.longitude + '&APPID=c7673cd4d9a958d58aa6f19d68718ea0'
+            var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?lat=' + position.latitude + '&lon=' + position.longitude + '&APPID=c7673cd4d9a958d58aa6f19d68718ea0'
             $.getJSON(weatherURL,jsonSuccess);
 
             selectCourse();

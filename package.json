@@ -1,0 +1,26 @@
+{
+  "name": "golf-score",
+  "version": "1.0.0",
+  "description": "Calculating scores for golf package",
+  "main": "golf.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kendratate/golf.git"
+  },
+  "keywords": [
+    "golf",
+    "scorecard",
+    "kendra",
+    "tateconsult",
+    "tate"
+  ],
+  "author": "Kendra Tate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kendratate/golf/issues"
+  },
+  "homepage": "https://github.com/kendratate/golf#readme"
+}

@@ -20,28 +20,34 @@
 </div>
 
 <div id="addButtonContainer"><button type="button" class="btn btn-success" onclick="addPlayer()">Add Player</button></div>
-
+<!--<div id="position"></div>-->
+<div id="weather"></div>
+<!--<div id="icon"></div>-->
+<div id="map"></div>
 
     <!--form for adding a player-->
     <div class="modal fade"  id="addPlayerContainer">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="form">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Add a Player</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-inline">
-                        <div class="form-group">
+                    <!--<form class="form-inline">-->
+                        <!--<div class="form-group">-->
                             <label class="sr-only" for="formName">Name:</label>
                             <input type="text" class="form-control" id="formName" placeholder="Enter name">
-                        </div>
-                        <div id="teeDropDown" class="dropdown">
+                        <!--</div>-->
+                        <div>Tee:</div><span id="pickedTee"></span>
+                        <div id="teeDropDown" class="input-group-btn">
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tee Box
                                 <span class="caret"></span></button>
-                            <ul id="teeBoxes" class="dropdown-menu list-inline"></ul>
+                            <ul id="teeBoxes" class="dropdown-menu list-inline" role="menu">
+
+                            </ul>
                         </div>
                         <button id="addBtn" type="submit" onclick="teeUp()" class="btn btn-primary">Tee up!</button>
-                    </form>
+                    <!--</form>-->
                     <div id="message"></div>
                 </div>
             </div>

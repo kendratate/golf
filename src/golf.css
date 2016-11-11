@@ -1,9 +1,9 @@
-html, body{
+body{
     width: 100%;
-    height: 100%;
+    height: auto;
     /*background-color: #0585FF;*/
     background-image: url("../images/GolfBackground.jpg");
-
+    background-repeat: no-repeat;
 }
 
 .table{
@@ -22,8 +22,9 @@ html, body{
 }
 
 .page-header a{
-    color: wheat;
+    color: blue;
     font-size: large;
+    color: lightgray;
 }
 
 .page-header span{
@@ -174,3 +175,9 @@ html, body{
     color: #fff;
 }
 
+#weather{
+    bottom: 5%;
+    left: 5%;
+    position: absolute;
+    color: white;
+}

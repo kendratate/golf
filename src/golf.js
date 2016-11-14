@@ -2,7 +2,7 @@
  * Created by kendratate on 10/25/16.
  */
 
-var players = [{playerName: "", playerTee: 0}];
+var players = [{playerName: "     ", playerTee: 0}];
 var numberofholesfront = 9;
 var numberofholesback = 9;
 var numberofholes = 18;
@@ -33,7 +33,6 @@ function addPlayer() {
     // add an object of name and tee to the players array
     players.push({playerName: "", playerTee: ""});
 
-    $("addPlayeContainer").hide();
 }
 
 function teePicked(id){
@@ -47,6 +46,10 @@ function teeUp(){
     var i = playerIndex;
     var enteredName = $('#nameBox').val();
     var teeIndex = players[i].playerTee == ''? 0 : players[i].playerTee;
+
+
+    if (validateForm()) {
+        // $("addPlayerContainer").hide();
 
     // once the "tee up" button is pressed, include their name in the players array
     players[playerIndex].playerName = enteredName;
@@ -91,7 +94,7 @@ function teeUp(){
     // increment player index counter
     playerIndex++;
     $('#addPlayerContainer').hide();
-
+    };
 }
 
 function buildTable(){
@@ -236,19 +239,17 @@ function calculateBackScore(playerid){ // pass in the player id
 function validateForm(){
     var success1 = true;
     var success2 = true;
-    $('message').text("");
+    $('#message').text("");
 
     if ($("input#nameBox").val().trim().length <= 0) {
-        $('#message').text("** You must enter a name **");
+        $('#message').text("You must enter a name");
         success1 = false;
-
-        return false;
     };
 
     // check for duplicate name
-    for (var i=0; i < players.length; i++) {
+    for (var i=1; i < players.length; i++) {
         if ($("input#nameBox").val().trim() === players[i].playerName) {
-            $('#message').text("** Player name must be unique **");
+            $('#message').text("Player name must be unique");
             success2 = false;
         }
     };

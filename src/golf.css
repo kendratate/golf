@@ -6,8 +6,30 @@ body{
     background-repeat: no-repeat;
 }
 
+.courseInfo{
+    color: whitesmoke;
+    font-size: large;
+}
+
+.container-fluid div{
+    font-size: large;
+}
+
+#phone #website{
+    color: gold;
+}
+
+a{
+    color: #999333;
+}
+
 .table{
     background-color: ghostwhite;
+    text-align:center;
+}
+
+th{
+    text-align:center;
 }
 
 .container{
@@ -80,8 +102,44 @@ body{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    z-index: 9999;
+}
 
+thead tr{
+    color: white;
+    background-color: green;
+    border: 1px solid grey;
+    text-align: center;
+}
+
+.scoreboxes{
+    width:100%;
+    text-align:center;
+}
+
+
+.scoreRow{
+    border-bottom: 3pt solid darkgreen;
+    border-top: 3pt solid darkgreen;
+    text-align: center;
+}
+
+.scoreRow td:first-child{
+    font-weight: bold;
+}
+
+.total{
+    background-color: #b5c6dc;
+    border-left: 1pt solid black;
+    text-align: center;
+}
+
+.grandtotal{
+    background-color: #b5c6dc;
+    border-left: 3px solid black;
+    border-right: 3px solid black
+    text-align: center;
+    background-color: green;
+    color: white;
 }
 
 #getCourseContainer{
@@ -142,6 +200,17 @@ body{
 
 #addPlayerContainer {
     display:none;
+    margin: 0 auto;
+    width: 350px;
+    height: 200px;
+    background-color: lightsteelblue;
+    border-radius: 20px;
+    padding: 10px;
+    position: absolute;
+    left: 20%;
+    top: 30%;
+    border-style: single;
+    border-style: groove;
 }
 #addPlayerContainer .modal-dialog{
     width: 50%;
@@ -151,9 +220,9 @@ body{
 
 #addButtonContainer {
     display:none;
-    position: fixed;
-    left: 45%;
-    top: 15%;
+    position: absolute;
+    left: 85%;
+    top: 3%;
 }
 
 #addBtn{
@@ -167,6 +236,11 @@ body{
     background-color: #82b6c1;
 }
 
+#teeFromLine{
+    display: inline-block;
+    padding: 10px;
+}
+
 #courseselect{
     margin-left: 10px;
 }
@@ -176,8 +250,23 @@ body{
 }
 
 #weather{
-    bottom: 5%;
-    left: 5%;
-    position: absolute;
+    margin: 20px;
     color: white;
+}
+
+
+#input{
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    background-color: white;
+    background-color: -moz-field;
+    box-shadow: 1px 1px 1px 0 lightgray inset;
+    margin-top: 5px;
+    padding: 2px 3px;
+    width: 50px;
+}
+
+#message{
+    color:red;
+    font-size:large;
 }

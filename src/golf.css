@@ -270,3 +270,8 @@ thead tr{
     color:red;
     font-size:large;
 }
+
+.score{
+    color: white;
+    background-color: midnightblue;
+}

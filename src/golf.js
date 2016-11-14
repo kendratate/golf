@@ -54,41 +54,24 @@ function teeUp(){
     // once the "tee up" button is pressed, include their name in the players array
     players[playerIndex].playerName = enteredName;
 
-// FRONT 9 TABLE
-//     $(".front tbody").append("<tr class='parRow player" + i + "Par'>" + "<td id='player" + i + "par'>Par</td>" + "</tr>");
-//     //create row of pars
-//     for (var h = 0; h < activeCourse.course.hole_count / 2; h++) {
-//         $(".front tbody tr:last-child").append("<td>" + activeCourse.course.holes[h].tee_boxes[teeIndex].par+ "</td>");
-//         totalfrontpar += activeCourse.course.holes[h].tee_boxes[teeIndex].par;
-//     }
-//     $(".front tbody tr:last-child").append("<td>" + totalfrontpar + "</td>");
-
     // add player scores row
     var borderColor = activeCourse.course.holes[0].tee_boxes[teeIndex].tee_hex_color;
     $(".front tbody").append("<tr class='scoreRow player" + i + "ScoreRow'><td style = 'border-left: 3pt single " + borderColor+ "' id='player" + i + "'>" + enteredName + "</span></td></tr>");
     for (var h = 0; h < activeCourse.course.hole_count / 2; h++) {
-        $(".front tbody tr:last-child").append("<td><input  class='scoreboxes' type='number' min='1' id='player" + playerIndex + "hole" + h + "' onkeyup='calculateFrontScore(" + playerIndex + ")'></td>");
+        $(".front tbody tr:last-child").append("<td><input  class='scoreboxes' type='number' min='1' id='player" + playerIndex + "hole" + h + "' onchange='calculateFrontScore(" + playerIndex + ", " + h + ")'></td>");
     }
     $(".front tbody tr:last-child").append("<td id='totalfront" + i + "'></td>");
 
-
-// BACK 9 TABLE
-//     $(".back tbody").append("<tr class='parRow player" + i + "Par'>" + "<td id='player" + i + "par'>Par</td>" + "</tr>");
-//     //create row of pars
-//     for (var h = (Math.floor(activeCourse.course.hole_count / 2)); h < activeCourse.course.hole_count; h++) {
-//         $(".back tbody tr:last-child").append("<td>" + activeCourse.course.holes[h].tee_boxes[teeIndex].par + "</td>");
-//         totalbackpar += activeCourse.course.holes[h].tee_boxes[teeIndex].par;
-//     }
-//     $(".back tbody tr:last-child").append("<td>" + totalbackpar + "</td>");
 
     // add player scores row
     var borderColor = activeCourse.course.holes[0].tee_boxes[teeIndex].tee_hex_color;
     $(".back tbody").append("<tr class='scoreRow player" + i + "ScoreRow'><td style = 'border-left: 3pt single " + borderColor+ "' id='player" + i + "'>" + enteredName + "</span></td></tr>");
     for (var h = (Math.floor(activeCourse.course.hole_count / 2)); h < activeCourse.course.hole_count; h++) {
-        $(".back tbody tr:last-child").append("<td><input class='scoreboxes' type='number'  min='1' id='player" + playerIndex + "hole" + h + "' onkeyup='calculateBackScore(" + playerIndex + ")'></td>");
+        $(".back tbody tr:last-child").append("<td><input class='scoreboxes' type='number'  min='1' id='player" + playerIndex + "hole" + h + "' onchange='calculateBackScore(" + playerIndex + ", " + h + ")'></td>");
     }
     $(".back tbody tr:last-child").append("<td class='total' id='totalback" + i + "'></td>");
-    $(".back tbody tr:last-child").append("<td class='grandtotal' id='totalscore" + i + "'</td>");
+    $(".back tbody tr:last-child").append("<td class='grandtotal' id='totalscore" + i + "'></td>");
+    $(".back tbody tr:last-child").append("<td class='score' id='scoreplayer" + i + "'></td>");
 
 
     // increment player index counter
@@ -169,6 +152,7 @@ function buildTable(){
     }
     $(".back tbody tr:last-child").append("<td class='total'>" + activeCourse.course.tee_types[0].back_nine_par + "</td>");
     $(".back tbody tr:last-child").append("<td class='grandtotal'>" + activeCourse.course.tee_types[0].par + "</td>");
+    $(".back tbody tr:last-child").append("<td class='score'>From Par</td>");
 
     //fill tee box selector in add player dialog
     var i = playerIndex;
@@ -176,6 +160,8 @@ function buildTable(){
     for (var i = 0; i < activeCourse.course.tee_types.length; i++) {
         $("#teeBoxes").append("<li id='" + i + "'><a class='teelist' onclick='teePicked(" + i + ")' href='#' value='" + i + " '>" + activeCourse.course.tee_types[i].tee_type + "</li>");
     }
+
+
     $("#addButtonContainer").show();
 }
 
@@ -223,16 +209,23 @@ function calculateFrontScore(playerid){ // pass in the player id
         thetotal += Number($("#player"+playerid + "hole" + i).val());
     }
     $("#totalfront" + playerid).html(thetotal);
-    $("#totalscore" + playerid).html($("#totalfront" + playerid).val() + $("#totalback" + playerid).val());
+
 }
 
-function calculateBackScore(playerid){ // pass in the player id
+function calculateBackScore(playerid,hole){ // pass in the player id
     var thetotal = 0;
     for(i=numberofholesfront; i < numberofholesback + numberofholesfront; i++){
         thetotal += Number($("#player"+playerid + "hole" + i).val());
     }
     $("#totalback" + playerid).html(thetotal);
-    $("#totalscore" + playerid).html($("#totalfront" + playerid).val() + $("#totalback" + playerid).val());
+
+
+    if(hole == numberofholes-1){
+        var totalscore = Number($("#totalfront" + playerid).text()) + Number($("#totalback" + playerid).text());
+        $("#totalscore" + playerid).text(totalscore);
+        var totalfrompar = Number($("#totalscore" + playerid).text()) - Number(activeCourse.course.tee_types[0].par);
+        $("#scoreplayer" + playerid).html(totalfrompar);
+    }
 }
 
 

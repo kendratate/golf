@@ -36,14 +36,15 @@
 <div id="addPlayerContainer" tabindex = "-1">
     <!--<div class="modal-dialog" role="form">-->
         <!--<div class="modal-content">-->
+    <form name="myForm" type="submit" onsubmit="return validateForm()">
             <div class="add-header">
                 <h4 class="add-title">Add a Player</h4>
             </div>
             <div class="add-body">
                 <!--<form class="form-inline">-->
                 <!--<div class="form-group">-->
-                <label class="sr-only" for="formName">Name:</label>
-                <input type="text" class="form-control" id="formName" placeholder="Enter name">
+                <label class="sr-only" for="nameBox">Name:</label>
+                <input type="text" class="form-control" id="nameBox" placeholder="Enter name">
                 <!--</div>-->
                 <div id="teeFromLine">Tee box: </div><span id="pickedTee"></span>
                 <div id="teeDropDown" class="input-group-btn">
@@ -57,36 +58,11 @@
                 <!--</form>-->
                 <div id="message"></div>
             </div>
+    </form>
         <!--</div>-->
     <!--</div>-->
 </div>
-<!--<div class="modal fade"  id="addPlayerContainer">-->
-    <!--&lt;!&ndash;<div class="modal-dialog" role="form">&ndash;&gt;-->
-    <!--<div class="modal-content">-->
-        <!--<div class="modal-header">-->
-            <!--<h4 class="modal-title">Add a Player</h4>-->
-        <!--</div>-->
-        <!--<div class="modal-body">-->
-            <!--&lt;!&ndash;<form class="form-inline">&ndash;&gt;-->
-            <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
-            <!--<label class="sr-only" for="formName">Name:</label>-->
-            <!--<input type="text" class="form-control" id="formName" placeholder="Enter name">-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div id="teeFromLine">Tee box: </div><span id="pickedTee"></span>-->
-            <!--<div id="teeDropDown" class="input-group-btn">-->
-                <!--<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tee Box-->
-                    <!--<span class="caret"></span></button>-->
-                <!--<ul id="teeBoxes" class="dropdown-menu list-inline" role="menu">-->
 
-                <!--</ul>-->
-            <!--</div>-->
-            <!--<button id="addBtn" type="submit" onclick="teeUp()" class="btn btn-primary">Tee up!</button>-->
-            <!--&lt;!&ndash;</form>&ndash;&gt;-->
-            <!--<div id="message"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--</div>-->
 
 <script src="src/weather.js"></script>
 <script src="src/golf.js"></script>

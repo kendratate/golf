@@ -30,7 +30,7 @@ function ScoringService(){
         return totalScore;
     }
     this.calculateNet = function(playerScore, playerPar){
-        isNaN(playerPar)? 0 : playerPar;
+        isNaN(playerPar)? 0 : playerPar;rftg
         return (playerScore - playerPar);
     }
 

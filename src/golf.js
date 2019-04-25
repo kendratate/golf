@@ -169,7 +169,7 @@ function buildTable(){
 
 
 function selectCourse() {
-    $.post("https://golf-courses-api.herokuapp.com/courses/", position, function (data, status) {
+    $.post("http://golf-courses-api.herokuapp.com/courses/", position, function (data, status) {
         closeCourses = JSON.parse(data);
         $("#courseselect").append("<option disabled selected>Select a Golf Course</option>");
         for (var p in closeCourses.courses) {

@@ -72,10 +72,6 @@ th{
 
 }
 
-#frontleft{
-
-}
-
 #frontright{
     display: flex;
 }
@@ -84,9 +80,6 @@ th{
     display: flex;
 }
 
-.column{
-
-}
 
 .holcol{
     border: 1px solid #CCC;
@@ -136,7 +129,7 @@ thead tr{
 .grandtotal{
     background-color: #b5c6dc;
     border-left: 3px solid black;
-    border-right: 3px solid black
+    border-right: 3px solid black;
     text-align: center;
     background-color: green;
     color: white;

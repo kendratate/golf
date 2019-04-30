@@ -55,7 +55,7 @@ function teeUp(){
     players[playerIndex].playerName = enteredName;
 
     // add player scores row
-    var borderColor = activeCourse.holes[0].tee_boxes[teeIndex].tee_hex_color;
+    var borderColor = activeCourse.holes[0].teeBoxes[teeIndex].tee_hex_color;
     $(".front tbody").append("<tr class='scoreRow player" + i + "ScoreRow'><td style = 'border-left: 3pt single " + borderColor+ "' id='player" + i + "'>" + enteredName + "</span></td></tr>");
     for (var h = 0; h < activeCourse.hole_count / 2; h++) {
         $(".front tbody tr:last-child").append("<td><input  class='scoreboxes' type='number' min='1' id='player" + playerIndex + "hole" + h + "' onchange='calculateFrontScore(" + playerIndex + ", " + h + ")'></td>");
@@ -64,7 +64,7 @@ function teeUp(){
 
 
     // add player scores row
-    var borderColor = activeCourse.holes[0].tee_boxes[teeIndex].tee_hex_color;
+    var borderColor = activeCourse.holes[0].teeBoxes[teeIndex].tee_hex_color;
     $(".back tbody").append("<tr class='scoreRow player" + i + "ScoreRow'><td style = 'border-left: 3pt single " + borderColor+ "' id='player" + i + "'>" + enteredName + "</span></td></tr>");
     for (var h = (Math.floor(activeCourse.hole_count / 2)); h < activeCourse.hole_count; h++) {
         $(".back tbody tr:last-child").append("<td><input class='scoreboxes' type='number'  min='1' id='player" + playerIndex + "hole" + h + "' onchange='calculateBackScore(" + playerIndex + ", " + h + ")'></td>");
@@ -106,14 +106,14 @@ function buildTable(){
 
     //create rows for tees pulled from selected course
     $(".front").append("<tbody/>");
-    for (var t=0; t < activeCourse.holes[0].tee_boxes.length-1; t++) {
+    for (var t=0; t < activeCourse.holes[0].teeBoxes.length-1; t++) {
         $(".front tbody").append("<tr></tr>");
-        var bgColor = activeCourse.holes[0].tee_boxes[t].tee_hex_color;
+        var bgColor = activeCourse.holes[0].teeBoxes[t].tee_hex_color;
         var fontColor = getColorbyBgColor(bgColor);
-        $(".front tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].tee_boxes[t].tee_type + "</td>");
+        $(".front tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].teeBoxes[t].tee_type + "</td>");
         for (var h = 0; h < Math.floor(activeCourse.hole_count / 2); h++) {
-            $(".front tbody tr:last-child").append("<td>" + activeCourse.holes[h].tee_boxes[t].yards + "</td>");
-            totalfrontyards += activeCourse.holes[h].tee_boxes[t].yards;
+            $(".front tbody tr:last-child").append("<td>" + activeCourse.holes[h].teeBoxes[t].yards + "</td>");
+            totalfrontyards += activeCourse.holes[h].teeBoxes[t].yards;
         }
 
     $(".front tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[t].front_nine_yards + "</td>");
@@ -123,21 +123,21 @@ function buildTable(){
     $(".front tbody").append("<tr class='parRow'>" + "<td>Par</td>" + "</tr>");
     //create row of pars
     for (var h = 0; h < Math.floor(activeCourse.hole_count / 2); h++) {
-        $(".front tbody tr:last-child").append("<td>" + activeCourse.holes[h].tee_boxes[0].par+ "</td>");
-        totalfrontpar += activeCourse.holes[h].tee_boxes[0].par;
+        $(".front tbody tr:last-child").append("<td>" + activeCourse.holes[h].teeBoxes[0].par+ "</td>");
+        totalfrontpar += activeCourse.holes[h].teeBoxes[0].par;
     }
     $(".front tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[0].front_nine_par + "</td>");
 
 
     $(".back").append("<tbody/>");
-    for (var t=0; t < activeCourse.holes[0].tee_boxes.length-1; t++) {
+    for (var t=0; t < activeCourse.holes[0].teeBoxes.length-1; t++) {
         $(".back tbody").append("<tr></tr>");
-        var bgColor = activeCourse.holes[0].tee_boxes[t].tee_hex_color;
+        var bgColor = activeCourse.holes[0].teeBoxes[t].tee_hex_color;
         var fontColor = getColorbyBgColor(bgColor);
-        $(".back tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].tee_boxes[t].tee_type + "</td>");
+        $(".back tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].teeBoxes[t].tee_type + "</td>");
         for (var h = (Math.floor(activeCourse.hole_count / 2)); h < activeCourse.hole_count; h++) {
-            $(".back tbody tr:last-child").append("<td>" +  activeCourse.holes[h].tee_boxes[t].yards + "</td>");
-            totalbackyards += activeCourse.holes[h].tee_boxes[t].yards;
+            $(".back tbody tr:last-child").append("<td>" +  activeCourse.holes[h].teeBoxes[t].yards + "</td>");
+            totalbackyards += activeCourse.holes[h].teeBoxes[t].yards;
         }
     $(".back tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[t].back_nine_yards  + "</td>");
     $(".back tbody tr:last-child").append("<td class='grandtotal'>" + activeCourse.tee_types[t].yards + "</td>");
@@ -147,8 +147,8 @@ function buildTable(){
     $(".back tbody").append("<tr class='parRow'>" + "<td>Par</td>" + "</tr>");
     //create row of pars
     for (var h = (Math.floor(activeCourse.hole_count / 2)); h < activeCourse.hole_count; h++) {
-        $(".back tbody tr:last-child").append("<td>" + activeCourse.holes[h].tee_boxes[0].par+ "</td>");
-        totalbackpar += activeCourse.holes[h].tee_boxes[0].par;
+        $(".back tbody tr:last-child").append("<td>" + activeCourse.holes[h].teeBoxes[0].par+ "</td>");
+        totalbackpar += activeCourse.holes[h].teeBoxes[0].par;
     }
     $(".back tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[0].back_nine_par + "</td>");
     $(".back tbody tr:last-child").append("<td class='grandtotal'>" + activeCourse.tee_types[0].par + "</td>");

@@ -23,9 +23,9 @@ function removePlayer(theID){
 function addPlayer() {
     // var i = playerIndex;
     resetForm($('#addPlayerContainer'));
-    // for (var i = 0; i < activeCourse.tee_types.length; i++) {
-    //     $("#teeBoxes").append("<li id='" + i + "'><a class='teelist' onclick='teePicked(" + i + ")' href='#' value='" + i + " '>" + activeCourse.tee_types[i].tee_type + "</li>");
-    // }
+    for (var i=0; i < activeCourse.holes[0].teeBoxes.length; i++){
+         $("#teeBoxes").append("<li id='" + i + "'><a class='teelist' onclick='teePicked(" + i + ")' href='#' value='" + i + " '>" + activeCourse.holes[0].teeBoxes[i].teeType + "</li>");
+     }
 
     // make form visible
     $("#addPlayerContainer").show();

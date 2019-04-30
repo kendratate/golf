@@ -190,11 +190,11 @@ function getCourse(courseID){
     }).then(
         function(parseCourse){
             //check for undefined values from API
-            var courseName = !activeCourse.course.name ? "" : activeCourse.course.name;
-            var courseAddr = !activeCourse.course.addr_1  ? "" : activeCourse.course.addr_1 ;
-            var courseCity = !activeCourse.course.city  ? "" : activeCourse.course.city ;
-            var coursePhone = !activeCourse.course.phone ? "" : activeCourse.course.phone;
-            var courseWebsite = !activeCourse.course.website ? "" : activeCourse.course.website;
+            var courseName = !activeCourse.name ? "" : activeCourse.name;
+            var courseAddr = !activeCourse.addr_1  ? "" : activeCourse.addr_1;
+            var courseCity = !activeCourse.city  ? "" : activeCourse.city;
+            var coursePhone = !activeCourse.phone ? "" : activeCourse.phone;
+            var courseWebsite = !activeCourse.website ? "" : activeCourse.website;
 
             $(".container-fluid").html("<div class='courseInfo heading row'><div class='col-md-3'>" + courseName + "</div>");
             $(".container-fluid").append("<div class='col-md-3'>" + courseAddr + ", " + courseCity +  "</div>");

@@ -170,10 +170,13 @@ function buildTable(){
 
 function selectCourse() {
     $.get("https://golf-courses-api.herokuapp.com/courses/", position, function (data, status) {
-        closeCourses = JSON.parse(data);
+        //closeCourses = JSON.parse(data);
         $("#courseselect").append("<option disabled selected>Select a Golf Course</option>");
-        for (var p in closeCourses.courses) {
-            var selectInput = "<option value='" + closeCourses.courses[p].id + "'>" + closeCourses.courses[p].name + "</option>";
+        //for (var p in closeCourses.courses) {
+        //    var selectInput = "<option value='" + closeCourses.courses[p].id + "'>" + closeCourses.courses[p].name + "</option>";
+        //    $("#courseselect").append(selectInput);
+        for (var p in data.courses) {
+            var selectInput = "<option value='" + data.courses[p].id + "'>" + data.courses[p].name + "</option>";
             $("#courseselect").append(selectInput);
         }
 

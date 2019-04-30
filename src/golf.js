@@ -192,7 +192,7 @@ function getCourse(courseID){
         function(parseCourse){
             //check for undefined values from API
             var courseName = !activeCourse.name ? "" : activeCourse.name;
-            var courseAddr = !activeCourse.addr_1  ? "" : activeCourse.addr_1;
+            var courseAddr = !activeCourse.addr_1  ? "" : activeCourse.addr1;
             var courseCity = !activeCourse.city  ? "" : activeCourse.city;
             var coursePhone = !activeCourse.phone ? "" : activeCourse.phone;
             var courseWebsite = !activeCourse.website ? "" : activeCourse.website;

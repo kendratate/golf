@@ -116,7 +116,7 @@ function buildTable(){
             totalfrontyards += activeCourse.holes[h].teeBoxes[t].yards;
         }
 
-    //$(".front tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[t].front_nine_yards + "</td>");
+    $(".front tbody tr:last-child").append("<td class='total'>" + totalfrontyards + "</td>");
     totalfrontyards = 0;
     }
 
@@ -126,7 +126,7 @@ function buildTable(){
         $(".front tbody tr:last-child").append("<td>" + activeCourse.holes[h].teeBoxes[0].par+ "</td>");
         totalfrontpar += activeCourse.holes[h].teeBoxes[0].par;
     }
-    //$(".front tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[0].front_nine_par + "</td>");
+    $(".front tbody tr:last-child").append("<td class='total'>" + totalfrontpar + "</td>");
 
 
     $(".back").append("<tbody/>");
@@ -134,13 +134,14 @@ function buildTable(){
         $(".back tbody").append("<tr></tr>");
         var bgColor = activeCourse.holes[0].teeBoxes[t].teeHexColor;
         var fontColor = getColorbyBgColor(bgColor);
-        $(".back tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].teeBoxes[t].tee_type + "</td>");
+        $(".back tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].teeBoxes[t].teeType + "</td>");
         for (var h = (Math.floor(activeCourse.holeCount / 2)); h < activeCourse.holeCount; h++) {
             $(".back tbody tr:last-child").append("<td>" +  activeCourse.holes[h].teeBoxes[t].yards + "</td>");
             totalbackyards += activeCourse.holes[h].teeBoxes[t].yards;
         }
-    //$(".back tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[t].back_nine_yards  + "</td>");
-    //$(".back tbody tr:last-child").append("<td class='grandtotal'>" + activeCourse.tee_types[t].yards + "</td>");
+    totalyards = totalfrontyards + totalbackyards;
+    $(".back tbody tr:last-child").append("<td class='total'>" + totalbackyards  + "</td>");
+    $(".back tbody tr:last-child").append("<td class='grandtotal'>" + totalyards + "</td>");
     totalbackyards = 0;
     }
 

@@ -185,7 +185,7 @@ function selectCourse() {
 }
 
 function getCourse(courseID){
-    $.get("https://sgolf-courses-api.herokuapp.com/courses/" + courseID, function(data,status) {
+    $.get("https://golf-courses-api.herokuapp.com/courses/" + courseID, function(data,status) {
         activeCourse = JSON.parse(data);
     }).then(
         function(parseCourse){

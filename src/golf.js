@@ -197,7 +197,7 @@ function getCourse(courseID){
             var courseWebsite = !activeCourse.website ? "" : activeCourse.website;
 
             $(".container-fluid").html("<div class='courseInfo heading row'><div class='col-md-3'>" + courseName + "</div>");
-            $(".container-fluid").append("<div class='col-md-3'>" + courseAddr + ", " + courseCity +  "</div>");
+            $(".container-fluid").append("<div class='courseInfo col-md-3'>" + courseAddr + ", " + courseCity +  "</div>");
             $(".container-fluid").append("<div id='phone' class='col-md-3'><a href = '" + coursePhone + "'>" + coursePhone + "</a></div>");
             $(".container-fluid").append("<div id='website' class='col-md-3'><a href='" +courseWebsite+"'>"+ courseWebsite + "</a></div> </div>");
         }

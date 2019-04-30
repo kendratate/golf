@@ -148,13 +148,13 @@ thead tr{
 #courseselect {
     position: absolute;
     top: 32%;
-    left: 10%;
+    left: 30%;
     height: 40px;
 }
 #chooseCourse{
     position: absolute;
     top: 60%;
-    left: 34%;
+    left: 40%;
 }
 
 .setupmodal{
@@ -235,7 +235,9 @@ thead tr{
 }
 
 #courseselect{
-    margin-left: 30px;
+    position:absolute;
+    top: 30%;
+    left: 30%;
 }
 
 .w3-teal{

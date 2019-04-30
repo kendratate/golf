@@ -106,7 +106,7 @@ function buildTable(){
 
     //create rows for tees pulled from selected course
     $(".front").append("<tbody/>");
-    for (var t=0; t < activeCourse.holes[0].teeBoxes.length-1; t++) {
+    for (var t=0; t < activeCourse.holes[0].teeBoxes.length; t++) {
         $(".front tbody").append("<tr></tr>");
         var bgColor = activeCourse.holes[0].teeBoxes[t].teeHexColor;
         var fontColor = getColorbyBgColor(bgColor);
@@ -130,7 +130,7 @@ function buildTable(){
 
 
     $(".back").append("<tbody/>");
-    for (var t=0; t < activeCourse.holes[0].teeBoxes.length-1; t++) {
+    for (var t=0; t < activeCourse.holes[0].teeBoxes.length; t++) {
         $(".back tbody").append("<tr></tr>");
         var bgColor = activeCourse.holes[0].teeBoxes[t].teeHexColor;
         var fontColor = getColorbyBgColor(bgColor);

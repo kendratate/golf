@@ -57,7 +57,7 @@ function teeUp(){
     // add player scores row
     var borderColor = activeCourse.holes[0].teeBoxes[teeIndex].teeHexColor;
     $(".front tbody").append("<tr class='scoreRow player" + i + "ScoreRow'><td style = 'border-left: 3pt single " + borderColor+ "' id='player" + i + "'>" + enteredName + "</span></td></tr>");
-    for (var h = 0; h < activeCourse.hole_count / 2; h++) {
+    for (var h = 0; h < activeCourse.holeCount / 2; h++) {
         $(".front tbody tr:last-child").append("<td><input  class='scoreboxes' type='number' min='1' id='player" + playerIndex + "hole" + h + "' onchange='calculateFrontScore(" + playerIndex + ", " + h + ")'></td>");
     }
     $(".front tbody tr:last-child").append("<td id='totalfront" + i + "'></td>");
@@ -66,7 +66,7 @@ function teeUp(){
     // add player scores row
     var borderColor = activeCourse.holes[0].teeBoxes[teeIndex].tee_hex_color;
     $(".back tbody").append("<tr class='scoreRow player" + i + "ScoreRow'><td style = 'border-left: 3pt single " + borderColor+ "' id='player" + i + "'>" + enteredName + "</span></td></tr>");
-    for (var h = (Math.floor(activeCourse.hole_count / 2)); h < activeCourse.hole_count; h++) {
+    for (var h = (Math.floor(activeCourse.holeCount / 2)); h < activeCourse.holeCount; h++) {
         $(".back tbody tr:last-child").append("<td><input class='scoreboxes' type='number'  min='1' id='player" + playerIndex + "hole" + h + "' onchange='calculateBackScore(" + playerIndex + ", " + h + ")'></td>");
     }
     $(".back tbody tr:last-child").append("<td class='total' id='totalback" + i + "'></td>");
@@ -91,14 +91,14 @@ function buildTable(){
     // create header row of table from number of holes from selected course
     $(".front").append('<thead/>');
     $(".front thead").append(" <tr><th>Out</th></tr>");
-    for (var h = 1; h <= activeCourse.hole_count / 2; h++) {
+    for (var h = 1; h <= activeCourse.holeCount / 2; h++) {
         $(".front thead tr").append("<th>" + h + "</th>");
     }
     $(".front thead tr").append("<th>Out Total</th>");
 
     $(".back").append('<thead/>');
     $(".back thead").append(" <tr><th>In</th></tr>");
-    for (var h2 = (Math.floor(activeCourse.hole_count / 2)+1); h2 <= activeCourse.hole_count; h2++) {
+    for (var h2 = (Math.floor(activeCourse.holeCount / 2)+1); h2 <= activeCourse.holeCount; h2++) {
         $(".back thead tr").append("<th>" + h2 + "</th>");
     }
     $(".back thead tr").append("<th>In Total</th>");
@@ -111,7 +111,7 @@ function buildTable(){
         var bgColor = activeCourse.holes[0].teeBoxes[t].teeHexColor;
         var fontColor = getColorbyBgColor(bgColor);
         $(".front tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].teeBoxes[t].teeType + "</td>");
-        for (var h = 0; h < Math.floor(activeCourse.hole_count / 2); h++) {
+        for (var h = 0; h < Math.floor(activeCourse.holeCount / 2); h++) {
             $(".front tbody tr:last-child").append("<td>" + activeCourse.holes[h].teeBoxes[t].yards + "</td>");
             totalfrontyards += activeCourse.holes[h].teeBoxes[t].yards;
         }
@@ -122,7 +122,7 @@ function buildTable(){
 
     $(".front tbody").append("<tr class='parRow'>" + "<td>Par</td>" + "</tr>");
     //create row of pars
-    for (var h = 0; h < Math.floor(activeCourse.hole_count / 2); h++) {
+    for (var h = 0; h < Math.floor(activeCourse.holeCount / 2); h++) {
         $(".front tbody tr:last-child").append("<td>" + activeCourse.holes[h].teeBoxes[0].par+ "</td>");
         totalfrontpar += activeCourse.holes[h].teeBoxes[0].par;
     }
@@ -132,10 +132,10 @@ function buildTable(){
     $(".back").append("<tbody/>");
     for (var t=0; t < activeCourse.holes[0].teeBoxes.length-1; t++) {
         $(".back tbody").append("<tr></tr>");
-        var bgColor = activeCourse.holes[0].teeBoxes[t].tee_hex_color;
+        var bgColor = activeCourse.holes[0].teeBoxes[t].teeHexColor;
         var fontColor = getColorbyBgColor(bgColor);
         $(".back tbody tr:last-child").append("<td style = 'background-color: " + bgColor + "; color: " + fontColor + ";'>" + activeCourse.holes[0].teeBoxes[t].tee_type + "</td>");
-        for (var h = (Math.floor(activeCourse.hole_count / 2)); h < activeCourse.hole_count; h++) {
+        for (var h = (Math.floor(activeCourse.holeCount / 2)); h < activeCourse.holeCount; h++) {
             $(".back tbody tr:last-child").append("<td>" +  activeCourse.holes[h].teeBoxes[t].yards + "</td>");
             totalbackyards += activeCourse.holes[h].teeBoxes[t].yards;
         }
@@ -146,20 +146,20 @@ function buildTable(){
 
     $(".back tbody").append("<tr class='parRow'>" + "<td>Par</td>" + "</tr>");
     //create row of pars
-    for (var h = (Math.floor(activeCourse.hole_count / 2)); h < activeCourse.hole_count; h++) {
+    for (var h = (Math.floor(activeCourse.holeCount / 2)); h < activeCourse.holeCount; h++) {
         $(".back tbody tr:last-child").append("<td>" + activeCourse.holes[h].teeBoxes[0].par+ "</td>");
         totalbackpar += activeCourse.holes[h].teeBoxes[0].par;
     }
     //$(".back tbody tr:last-child").append("<td class='total'>" + activeCourse.tee_types[0].back_nine_par + "</td>");
     //$(".back tbody tr:last-child").append("<td class='grandtotal'>" + activeCourse.tee_types[0].par + "</td>");
-    //$(".back tbody tr:last-child").append("<td class='score'>From Par</td>");
+    $(".back tbody tr:last-child").append("<td class='score'>From Par</td>");
 
     //fill tee box selector in add player dialog
     var i = playerIndex;
     resetForm($('#addPlayerContainer'));
-    //for (var i = 0; i < activeCourse.tee_types.length; i++) {
-    //    $("#teeBoxes").append("<li id='" + i + "'><a class='teelist' onclick='teePicked(" + i + ")' href='#' value='" + i + " '>" + activeCourse.tee_types[i].tee_type + "</li>");
-    //}
+    for (var i = 0; i < activeCourse.holes[0].teeBoxes.length; i++) {
+        $("#teeBoxes").append("<li id='" + i + "'><a class='teelist' onclick='teePicked(" + i + ")' href='#' value='" + i + " '>" + activeCourse.holes[0].teeBoxes[i].teeType + "</li>");
+    }
 
 
     $("#addButtonContainer").show();
